@@ -1,0 +1,54 @@
+﻿<Window x:Class="RoundedBorder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RoundedBorder"
+        Title="MainWindow" Height="450" Width="800"
+        
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Window.Resources>
+        <ControlTemplate TargetType="{x:Type Button}" x:Key="RoundButtonTemplate">
+            <Grid>
+                <Ellipse Height="20" Width="20" 
+                                 StrokeThickness="1"
+                                 Fill="Red"></Ellipse>
+
+                <ContentPresenter Content="X" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
+    
+    <Border CornerRadius="5" BorderThickness="10" 
+            BorderBrush="LightSkyBlue">
+        <Grid Background="LightSkyBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!--To allow user to drag the window -->
+            <Border Height="50" Width="790" BorderThickness="0.1"
+                    Background="LightSkyBlue"
+                Grid.Column="0" Grid.Row="0" MouseDown="Border_MouseDown">
+
+                <Button Height="20" Width="20"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,15,0"
+                        Click="Button_Click"
+                        Template="{StaticResource RoundButtonTemplate}"></Button>
+            </Border>
+            
+            
+        </Grid>
+    </Border>
+</Window>
