@@ -12,13 +12,24 @@
         AllowsTransparency="True">
 
     <Window.Resources>
-        <ControlTemplate TargetType="{x:Type Button}" x:Key="RoundButtonTemplate">
+        <ControlTemplate TargetType="{x:Type Button}" x:Key="RoundCloseButtonTemplate">
             <Grid>
                 <Ellipse Height="20" Width="20" 
                                  StrokeThickness="1"
-                                 Fill="Red"></Ellipse>
+                                 Fill="OrangeRed"></Ellipse>
 
                 <ContentPresenter Content="X" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate TargetType="{x:Type Button}" x:Key="RoundMinimizeButtonTemplate">
+            <Grid>
+                <Ellipse Height="20" Width="20" 
+                                 StrokeThickness="1"
+                                 Fill="LightGreen"></Ellipse>
+
+                <ContentPresenter Content="-" 
                                   HorizontalAlignment="Center" 
                                   VerticalAlignment="Center"/>
             </Grid>
@@ -37,16 +48,28 @@
             </Grid.RowDefinitions>
 
             <!--To allow user to drag the window -->
-            <Border Height="50" Width="790" BorderThickness="0.1"
-                    Background="LightSkyBlue"
+            <Grid Height="50" Width="790"
                 Grid.Column="0" Grid.Row="0" MouseDown="Border_MouseDown">
 
-                <Button Height="20" Width="20"
+                    <TextBlock Text="Title here..." 
+                               Margin="5,10,0,0"
+                               FontSize="18"
+                               Foreground="DarkBlue">
+                    </TextBlock>
+
+                    <Button Height="20" Width="20"
                         HorizontalAlignment="Right"
                         Margin="0,0,15,0"
                         Click="Button_Click"
-                        Template="{StaticResource RoundButtonTemplate}"></Button>
-            </Border>
+                        Template="{StaticResource RoundCloseButtonTemplate}"></Button>
+
+                <Button Height="20" Width="20"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,40,0"
+                        Click="Button_Click"
+                        Template="{StaticResource RoundMinimizeButtonTemplate}"></Button>
+
+            </Grid>
             
             
         </Grid>
